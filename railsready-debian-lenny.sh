@@ -14,10 +14,10 @@
 system_version="Debian Lenny 5.0x"
 
 ruby_version="1.9.2"
-ruby_version_string="1.9.2-p136"
-ruby_source_dir_name="ruby-1.9.2-p136"
+ruby_version_string="1.9.2-p180"
+ruby_source_dir_name="ruby-1.9.2-p180"
 
-passenger_version="3.0.2"
+passenger_version="3.0.7"
 
 script_runner=$(whoami)
 log_file=$(cd && pwd)/rails_install.log
@@ -184,4 +184,4 @@ echo -e "#################################"
 echo -e "Please logout/login to access run rails"
 echo -e "\n"
 
-echo -e "\n Thanks!\n-Jakub"
+echo -e "\n Thanks!\ni-Jakub"
