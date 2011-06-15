@@ -75,7 +75,7 @@ echo " * Bundler, Passenger, and Rails gems"
 echo " * Git"
 
 echo -e "\nThis script is always changing."
-echo "Make sure you got it from https://github.com/vysogot/railsready-debian-lenny"
+echo "Make sure you got it from https://github.com/babinho/railsready-debian-lenny"
 
 # Update the system before going any further
 echo -e "\n=> Updating system (this may take a while)..."
@@ -111,7 +111,7 @@ echo "==> done..."
 
 # Install RVM
 echo -e "\n=> Installing RVM the Ruby enVironment Manager http://rvm.beginrescueend.com/rvm/install/ \n"
-bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
+bash < <( curl -s https://rvm.beginrescueend.com/install/rvm )
 echo -e "\n=> Setting up RVM to load with new shells..."
 echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> "$HOME/.bashrc"
 echo "==>done..."
