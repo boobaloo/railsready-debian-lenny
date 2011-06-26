@@ -9,7 +9,7 @@ This project is inspired by https://github.com/joshfng/railsready/ by Joshua Fry
 ##Run this on a fresh Debian Lenny install.
 
 ##To run
-  * `wget --no-check-certificate https://github.com/vysogot/railsready-debian-lenny/raw/master/railsready-debian-lenny.sh && bash railsready-debian-lenny.sh`
+  * `wget --no-check-certificate https://github.com/babinho/railsready-debian-lenny/raw/master/railsready-debian-lenny.sh && bash railsready-debian-lenny.sh`
   * If you want to watch the install log run `tail -f ~/rails_install.log` in a next shell (ALT+<F2-F6> for non-gui)
 
 ##What this gives you?
@@ -21,7 +21,7 @@ In order of being installed:
   * imagemagick
   * git-core
   * RVM
-  * Ruby 1.9.2-p136 on RVM
+  * Ruby 1.9.2-p180 on RVM with fast load patch
   * Configure Ruby for Debian
   * Bundler, Passenger, and Rails gems
   * Apache + Phusion Passenger slightly configured

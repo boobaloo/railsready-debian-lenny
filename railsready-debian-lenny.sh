@@ -68,7 +68,7 @@ echo "#################################"
 echo -e "\n"
 echo "What this script gets you:"
 echo " * An updated system"
-echo " * Ruby $ruby_version_string on RVM"
+echo " * Ruby $ruby_version_string on RVM patched with load.patch"
 echo " * Imagemagick"
 echo " * libs needed to run Rails (sqlite, etc.)"
 echo " * Bundler, Passenger, and Rails gems"
@@ -127,10 +127,13 @@ echo -e "\n=> Installing packages (zlib, openssl) to configure Ruby (this will t
 rvm package install zlib openssl >> $log_file 2>&1
 echo -r "\n==> done..."
 
+# Get Ruby 1.9.2-p180 load.patch
+echo -e "\n => Downloading ruby load.patch from https://raw.github.com/gist/1008945"
+wget -O load.patch https://raw.github.com/gist/1008945
 # Install specific Ruby version
 echo -e "\n=> Installing $ruby_version_string with zlib and openssl(this will take awhile)..."
 echo -e "=> More information about installing Rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
-rvm install $ruby_version_string -C --with-zlib-dir=$HOME/.rvm/usr --with-openssl-dir=$HOME/.rvm/usr
+rvm install $ruby_version_string -C --with-zlib-dir=$HOME/.rvm/usr --with-openssl-dir=$HOME/.rvm/usr --patch load.patch
 echo -e "\n==> done..."
 
 # Set new Ruby as a default interpreter
@@ -177,6 +180,7 @@ sudo touch /etc/apache2/mods-available/passenger.conf
 sudo su -c "echo 'PassengerRoot /home/$script_runner/.rvm/gems/$ruby_source_dir_name/gems/passenger-$passenger_version' >> /etc/apache2/mods-available/passenger.conf"
 
 # Show installation complete message
+rm -rf load.patch
 echo -e "\n"
 echo -e "#################################"
 echo -e "### Installation is complete! ###"
