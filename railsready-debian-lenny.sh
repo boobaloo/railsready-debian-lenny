@@ -132,7 +132,7 @@ echo -e "\n => Downloading ruby load.patch from https://raw.github.com/gist/1008
 wget -O load.patch https://raw.github.com/gist/1008945
 # Get disable ssl2 nossl.patch
 echo -e "\n => Downloading ruby nossl.patch"
-wget -O load.patch https://raw.github.com/gist/1076429/d8442bfd5b89a24fcf1fa1daa391f81afca9d842/nossl.patch
+wget -O nossl.patch https://raw.github.com/gist/1076429/d8442bfd5b89a24fcf1fa1daa391f81afca9d842/nossl.patch
 # Install specific Ruby version
 echo -e "\n=> Installing $ruby_version_string with zlib and openssl(this will take awhile)..."
 echo -e "=> More information about installing Rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
