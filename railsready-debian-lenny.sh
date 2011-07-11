@@ -87,7 +87,7 @@ echo "==> done..."
 echo -e "\n=> Installing build tools..."
 sudo apt-get -y -V install curl \
   git-core gcc make libxml2-dev libxslt-dev libopenssl-ruby \
-  libncurses5-dev libreadline5-dev apache2-mpm-prefork apache2-prefork-dev \
+  libncurses5-dev libreadline-dev apache2-mpm-prefork apache2-prefork-dev \
   libapr1-dev libaprutil1-dev build-essential libcurl4-openssl-dev \
   libssl-dev zlib1g-dev libopenssl-ruby >> $log_file 2>&1
 echo "==> done..."
