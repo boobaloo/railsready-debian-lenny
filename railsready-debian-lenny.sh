@@ -11,13 +11,13 @@
 # Contributions from: Ryan McGeary <ryan@mcgeary.org>
 #
 
-system_version="Debian Lenny 5.0x"
+system_version="Debian Unstable"
 
 ruby_version="1.9.2"
 ruby_version_string="1.9.2-p180"
 ruby_source_dir_name="ruby-1.9.2-p180"
 
-passenger_version="3.0.7"
+passenger_version="3.0.9"
 
 script_runner=$(whoami)
 log_file=$(cd && pwd)/rails_install.log
@@ -40,7 +40,7 @@ echo -e "\n"
 echo "!!! This script will update your system! Run on a fresh $system_version install only !!!"
 echo "run tail -f $log_file in a new terminal to watch the install"
 
-# Help with sudo privilages
+# Help with sudo privileges
 echo -e "If this is just installed then add a user "$script_runner" to the sudoers.\n"
 echo "Do this by yourself:"
 echo "su"
@@ -62,7 +62,7 @@ sudo -v >/dev/null 2>&1 || { echo $script_runner has no sudo privileges ; exit 1
 
 echo -e "\n\n"
 echo "#################################"
-echo "## Rails Ready -- Debian Lenny ##"
+echo "##Rails Ready - Debian Unstable##"
 echo "#################################"
 
 echo -e "\n"
@@ -75,7 +75,7 @@ echo " * Bundler, Passenger, and Rails gems"
 echo " * Git"
 
 echo -e "\nThis script is always changing."
-echo "Make sure you got it from https://github.com/babinho/railsready-debian-lenny"
+echo "Make sure you got it from https://github.com/boobaloo/railsready-debian-lenny"
 
 # Update the system before going any further
 echo -e "\n=> Updating system (this may take a while)..."
@@ -93,15 +93,15 @@ sudo apt-get -y -V install curl \
 echo "==> done..."
 
 # Configure backports and install SQLite3 from backports
-echo -e "\n=> Configuring backports and installing libs needed for sqlite from backports..."
-sudo su -c 'echo deb http://www.backports.org/debian lenny-backports main contrib non-free >> /etc/apt/sources.list'
-sudo apt-get -y -V update >> $log_file 2>&1
-sudo apt-get -y -V -t lenny-backports install sqlite3 libsqlite3-dev >> $log_file 2>&1
-echo "==> done..."
+# echo -e "\n=> Configuring backports and installing libs needed for sqlite from backports..."
+# sudo su -c 'echo deb http://www.backports.org/debian lenny-backports main contrib non-free >> /etc/apt/sources.list'
+# sudo apt-get -y -V update >> $log_file 2>&1
+# sudo apt-get -y -V -t lenny-backports install sqlite3 libsqlite3-dev >> $log_file 2>&1
+# echo "==> done..."
 
 # Install imagemagick
 echo -e "\n=> Installing imagemagick (this may take awhile)..."
-sudo apt-get -y install imagemagick libmagick9-dev >> $log_file 2>&1
+sudo apt-get -y install imagemagick libmagickcore-dev >> $log_file 2>&1
 echo "==> done..."
 
 # Install git-core
@@ -110,8 +110,8 @@ sudo apt-get -y install git-core >> $log_file 2>&1
 echo "==> done..."
 
 # Install RVM
-echo -e "\n=> Installing RVM the Ruby enVironment Manager http://rvm.beginrescueend.com/rvm/install/ \n"
-bash < <( curl -s https://rvm.beginrescueend.com/install/rvm )
+echo -e "\n=> Installing RVM the Ruby enVironment Manager http://rvm.beginrescueend.com/install/rvm \n"
+bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
 echo -e "\n=> Setting up RVM to load with new shells..."
 echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> "$HOME/.bashrc"
 echo "==>done..."
@@ -130,10 +130,13 @@ echo -r "\n==> done..."
 # Get Ruby 1.9.2-p180 load.patch
 echo -e "\n => Downloading ruby load.patch from https://raw.github.com/gist/1008945"
 wget -O load.patch https://raw.github.com/gist/1008945
+# Get disable ssl2 nossl.patch
+echo -e "\n => Downloading ruby nossl.patch"
+wget -O load.patch https://raw.github.com/gist/1076429/d8442bfd5b89a24fcf1fa1daa391f81afca9d842/nossl.patch
 # Install specific Ruby version
 echo -e "\n=> Installing $ruby_version_string with zlib and openssl(this will take awhile)..."
 echo -e "=> More information about installing Rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
-rvm install $ruby_version_string -C --with-zlib-dir=$HOME/.rvm/usr --with-openssl-dir=$HOME/.rvm/usr --patch load.patch
+rvm install $ruby_version_string -C --with-zlib-dir=$HOME/.rvm/usr --with-openssl-dir=$HOME/.rvm/usr --patch load.patch nossl.patch
 echo -e "\n==> done..."
 
 # Set new Ruby as a default interpreter
