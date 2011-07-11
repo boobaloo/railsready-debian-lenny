@@ -2,14 +2,14 @@
 
 ##Get a full Ruby on Rails stack up very fast on Debian Lenny
 
-UPDATE: it also works for Debian 6.0x Squeeze
+UPDATE: it also works for Debian 6.0x Sid
 
 This project is inspired by https://github.com/joshfng/railsready/ by Joshua Frye which refers to Ubuntu Server 10.04 LTS. Check it out!
 
 ##Run this on a fresh Debian Lenny install.
 
 ##To run
-  * `wget --no-check-certificate https://github.com/babinho/railsready-debian-lenny/raw/master/railsready-debian-lenny.sh && bash railsready-debian-lenny.sh`
+  * `wget --no-check-certificate https://github.com/boobaloo/railsready-debian-lenny/raw/master/railsready-debian-lenny.sh && bash railsready-debian-lenny.sh`
   * If you want to watch the install log run `tail -f ~/rails_install.log` in a next shell (ALT+<F2-F6> for non-gui)
 
 ##What this gives you?
@@ -17,11 +17,10 @@ This project is inspired by https://github.com/joshfng/railsready/ by Joshua Fry
 In order of being installed:
 
   * an updated system with necessary packages
-  * SQLite3 from lenny-backports
   * imagemagick
   * git-core
   * RVM
-  * Ruby 1.9.2-p180 on RVM with fast load patch
+  * Ruby 1.9.2-p180 on RVM with fast load patch and nossl.patch (due to install problems - http://digitaldisorder.posterous.com/ruby-rvm-and-debian-sid-problems)
   * Configure Ruby for Debian
   * Bundler, Passenger, and Rails gems
   * Apache + Phusion Passenger slightly configured
