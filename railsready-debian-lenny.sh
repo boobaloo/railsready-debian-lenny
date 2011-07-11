@@ -136,7 +136,7 @@ wget -O nossl.patch https://raw.github.com/gist/1076429/d8442bfd5b89a24fcf1fa1da
 # Install specific Ruby version
 echo -e "\n=> Installing $ruby_version_string with zlib and openssl(this will take awhile)..."
 echo -e "=> More information about installing Rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
-rvm install $ruby_version_string -C --with-zlib-dir=$HOME/.rvm/usr --with-openssl-dir=$HOME/.rvm/usr --patch load.patch nossl.patch
+rvm install $ruby_version_string -C --with-zlib-dir=$HOME/.rvm/usr --with-openssl-dir=$HOME/.rvm/usr --patch load.patch --patch nossl.patch
 echo -e "\n==> done..."
 
 # Set new Ruby as a default interpreter
